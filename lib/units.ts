@@ -12,7 +12,7 @@ export const UNITS: Record<string, UnitData> = {
     heroImage: "/images/unit1/hero-unit1-1.jpeg",
     images: [
       "/images/unit1/pool-unit1-1.jpeg",
-      "/images/unit1/exterior-unit1-1.jpeg",
+      "/images/unit1/hero-unit1-1.jpeg",
       "/images/unit1/pool-unit1-2.jpeg",
       "/images/unit1/living-unit1-1.jpeg",
       "/images/unit1/living-unit1-2.jpeg",
@@ -48,7 +48,7 @@ export const UNITS: Record<string, UnitData> = {
     bedrooms: 5,
     heroImage: "/images/unit2/hero-unit2-1.jpeg",
     images: [
-      "/images/unit2/exterior-unit2-1.jpeg",
+      "/images/unit2/hero-unit2-1.jpeg",
       "/images/unit2/pool-unit2-1.jpeg",
       "/images/unit2/pool-unit2-2.jpeg",
       "/images/unit2/living-unit2-1.jpeg",
