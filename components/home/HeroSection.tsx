@@ -17,7 +17,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/unit1/pool-unit1-1.jpg"
+          src="/images/unit1/pool-unit1-1.jpeg"
           alt="The Lawo Homestay — kolam renang peribadi"
           fill
           priority
