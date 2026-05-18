@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Booking {
+  id              Int       @id @default(autoincrement())
+  booking_code    String    @unique @db.VarChar(20)
+  unit            String    @db.VarChar(10)
+  guest_name      String    @db.VarChar(100)
+  guest_phone     String    @db.VarChar(20)
+  guest_email     String?   @db.VarChar(100)
+  checkin_date    DateTime  @db.Date
+  checkout_date   DateTime  @db.Date
+  nights          Int
+  pax             Int?
+  day_type        String    @db.VarChar(10)
+  amount          Decimal   @db.Decimal(10, 2)
+  deposit         Decimal   @default(300) @db.Decimal(10, 2)
+  deposit_paid    Boolean   @default(false)
+  deposit_paid_at DateTime?
+  full_paid       Boolean   @default(false)
+  full_paid_at    DateTime?
+  billplz_bill_id String?   @db.VarChar(50)
+  status          String    @default("pending") @db.VarChar(20)
+  source          String    @default("website") @db.VarChar(20)
+  notes           String?   @db.Text
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @updatedAt
+
+  @@map("bookings")
+}
+
+model BlockedDate {
+  id         Int      @id @default(autoincrement())
+  unit       String   @db.VarChar(10)
+  date_from  DateTime @db.Date
+  date_to    DateTime @db.Date
+  reason     String?  @db.VarChar(200)
+  created_by String?  @db.VarChar(50)
+  created_at DateTime @default(now())
+
+  @@map("blocked_dates")
+}
+
+model Setting {
+  id            Int      @id @default(autoincrement())
+  setting_key   String   @unique @db.VarChar(100)
+  setting_value String?  @db.Text
+  updated_at    DateTime @updatedAt
+
+  @@map("settings")
+}
+
+model AdminUser {
+  id         Int       @id @default(autoincrement())
+  username   String    @unique @db.VarChar(50)
+  password   String    @db.VarChar(255)
+  email      String?   @db.VarChar(100)
+  created_at DateTime  @default(now())
+  last_login DateTime?
+
+  @@map("admin_users")
+}
+
+model ActivityLog {
+  id          Int      @id @default(autoincrement())
+  action      String   @db.VarChar(100)
+  description String?  @db.Text
+  booking_id  Int?
+  admin_user  String?  @db.VarChar(50)
+  ip_address  String?  @db.VarChar(50)
+  created_at  DateTime @default(now())
+
+  @@map("activity_log")
+}
