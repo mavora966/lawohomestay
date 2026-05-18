@@ -65,7 +65,7 @@ export default function HeroSection() {
         <div className="mt-14 flex flex-wrap gap-6 md:gap-12">
           {[
             { val: "2", label: "Unit Eksklusif" },
-            { val: "25", label: "Max Kapasiti" },
+            { val: "40", label: "Max Kapasiti" },
             { val: "2", label: "Kolam Renang" },
             { val: "9", label: "Bilik Tidur" },
           ].map(({ val, label }) => (
