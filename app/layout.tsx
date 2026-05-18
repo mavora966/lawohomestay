@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Outfit } from "next/font/google";
 import "./globals.css";
+import { Header, Footer, WhatsAppFloat } from "@/components/layout";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -40,7 +41,10 @@ export default function RootLayout({
       className={`${playfair.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-lawo-bg text-lawo-black font-outfit">
-        {children}
+        <Header />
+        <div className="flex-1">{children}</div>
+        <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   );
