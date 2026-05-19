@@ -41,7 +41,9 @@ export default function BookingModal({
     : null;
 
   const waMessage = encodeURIComponent(
-    `Salam, saya ingin membuat tempahan ${unitName}.\n\nCheck-in: ${checkin}\nCheck-out: ${checkout}\nMalam: ${nights}\n\nSila bantu saya untuk mengesahkan ketersediaan.`
+    checkin && checkout
+      ? `Salam, saya ingin membuat tempahan ${unitName}.\n\nCheck-in: ${checkin}\nCheck-out: ${checkout}\nMalam: ${nights}\n\nSila bantu saya untuk mengesahkan ketersediaan.`
+      : `Salam, saya ingin membuat tempahan ${unitName}. Boleh saya dapatkan maklumat lanjut?`
   );
 
   return (

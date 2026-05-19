@@ -54,14 +54,16 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <Link
-              href="/"
-              className={[
-                "font-playfair font-bold text-xl md:text-2xl tracking-wide transition-colors",
-                transparent ? "text-lawo-white" : "text-lawo-black",
-              ].join(" ")}
-            >
-              The Lawo
+            <Link href="/" className="flex items-center">
+              {/* Single black SVG — CSS invert makes it white on transparent header */}
+              <img
+                src="/logo-black.svg"
+                alt="The Lawo Homestay"
+                className={[
+                  "h-12 w-auto transition-all duration-300",
+                  transparent ? "invert" : "",
+                ].join(" ")}
+              />
             </Link>
 
             {/* Desktop Nav */}
@@ -148,9 +150,11 @@ export default function Header() {
           ].join(" ")}
         >
           <div className="h-16 flex items-center px-6 border-b border-lawo-gray-light">
-            <span className="font-playfair font-bold text-xl text-lawo-black">
-              The Lawo
-            </span>
+            <img
+              src="/logo-black.svg"
+              alt="The Lawo Homestay"
+              className="h-10 w-auto"
+            />
           </div>
 
           <nav className="flex-1 flex flex-col px-6 py-8 gap-1">

@@ -42,7 +42,7 @@ export default function UnitBookingCalendar({ unitId }: UnitBookingCalendarProps
   const fetchIcal = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/ical?unit=${unitId}`);
+      const res = await fetch(`/api/availability?unit=${unitId}`);
       const data = await res.json();
       setBookedRanges(data.booked ?? []);
     } catch { /* silent */ }
@@ -80,7 +80,7 @@ export default function UnitBookingCalendar({ unitId }: UnitBookingCalendarProps
   };
 
   const nights = checkin && checkout
-    ? Math.round((new Date(checkout).getTime() - new Date(checkin).getTime()) / 86400000) : 0;
+    ? Math.floor((new Date(checkout).getTime() - new Date(checkin).getTime()) / 86400000) : 0;
 
   const estimatedPrice = (() => {
     if (!checkin || !checkout || nights < 1) return null;

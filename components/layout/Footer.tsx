@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   IconBrandInstagram,
   IconBrandFacebook,
@@ -32,32 +33,43 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
           {/* Brand */}
           <div>
-            <h2 className="font-playfair text-2xl font-bold mb-3">
-              The Lawo Homestay
-            </h2>
+            <Link href="/" className="inline-block mb-5">
+              <Image
+                src="/logo-white.svg"
+                alt="The Lawo Homestay"
+                width={37}
+                height={48}
+                unoptimized
+                className="h-14 w-auto"
+              />
+            </Link>
             <p className="font-outfit text-sm text-lawo-white/60 leading-relaxed mb-6">
               Homestay eksklusif di Kuala Terengganu. Sempurna untuk keluarga
               dan kumpulan besar yang ingin pengalaman penginapan mewah.
             </p>
             <div className="flex gap-3">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="p-2 rounded-full border border-lawo-white/20 hover:border-lawo-white/60 hover:bg-lawo-white/10 transition-all"
-              >
-                <IconBrandInstagram size={18} />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="p-2 rounded-full border border-lawo-white/20 hover:border-lawo-white/60 hover:bg-lawo-white/10 transition-all"
-              >
-                <IconBrandFacebook size={18} />
-              </a>
+              {process.env.NEXT_PUBLIC_INSTAGRAM_URL && (
+                <a
+                  href={process.env.NEXT_PUBLIC_INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="p-2 rounded-full border border-lawo-white/20 hover:border-lawo-white/60 hover:bg-lawo-white/10 transition-all"
+                >
+                  <IconBrandInstagram size={18} />
+                </a>
+              )}
+              {process.env.NEXT_PUBLIC_FACEBOOK_URL && (
+                <a
+                  href={process.env.NEXT_PUBLIC_FACEBOOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="p-2 rounded-full border border-lawo-white/20 hover:border-lawo-white/60 hover:bg-lawo-white/10 transition-all"
+                >
+                  <IconBrandFacebook size={18} />
+                </a>
+              )}
             </div>
           </div>
 

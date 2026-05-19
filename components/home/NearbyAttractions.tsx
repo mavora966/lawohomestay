@@ -24,10 +24,10 @@ const attractions = [
     category: "Makanan & Hiburan",
     emoji: "🍜",
     places: [
-      { name: "Restoran Mak Ngah (Nasi Dagang)", dist: "~2 km" },
-      { name: "Warung Ikan Bakar Tok Jembal", dist: "~8 km" },
-      { name: "Mydin Kuala Terengganu", dist: "~5 km" },
-      { name: "KTCC Mall", dist: "~6 km" },
+      { name: "Nasi Dagang Atas Tol", dist: "~3 km" },
+      { name: "Keropok Lekor Losong", dist: "~4 km" },
+      { name: "Ikan Celup Tepung Pok Nong", dist: "~5 km" },
+      { name: "KTCC & Mayang Mall", dist: "~6 km" },
     ],
   },
 ];

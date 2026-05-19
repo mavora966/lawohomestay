@@ -9,6 +9,7 @@ import {
   IconBrandWhatsapp,
   IconHome,
 } from "@tabler/icons-react";
+import { fbq, pushDataLayer } from "@/lib/tracking";
 
 const SUCCESS_STEPS = [
   {
@@ -36,12 +37,9 @@ function ThankYouContent() {
     "Salam, saya telah berjaya membayar deposit tempahan The Lawo Homestay. Boleh saya dapatkan pengesahan?"
   );
 
-  // dataLayer push purchase event
-  if (typeof window !== "undefined" && paid) {
-    const dl = (window as unknown as Record<string, unknown>).dataLayer;
-    if (Array.isArray(dl)) {
-      dl.push({ event: "purchase", value: 300, currency: "MYR" });
-    }
+  if (paid) {
+    fbq("Purchase", { value: 300, currency: "MYR" });
+    pushDataLayer({ event: "purchase", value: 300, currency: "MYR" });
   }
 
   if (paid) {

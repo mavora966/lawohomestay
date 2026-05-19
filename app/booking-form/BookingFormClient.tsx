@@ -7,6 +7,7 @@ import GuestForm from "@/components/booking/GuestForm";
 import BankSelector from "@/components/booking/BankSelector";
 import BookingSummary from "@/components/booking/BookingSummary";
 import { formatPhone, getDayType } from "@/lib/utils";
+import { fbq, pushDataLayer } from "@/lib/tracking";
 import { UNITS } from "@/lib/units";
 import type { Unit } from "@/types";
 
@@ -83,14 +84,8 @@ export default function BookingFormClient({ unit, checkin, checkout, nights }: P
         return;
       }
 
-      // Push dataLayer add_payment_info
-      if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).dataLayer) {
-        ((window as unknown as Record<string, unknown>).dataLayer as unknown[]).push({
-          event: "add_payment_info",
-          value: 300,
-          currency: "MYR",
-        });
-      }
+      fbq("AddPaymentInfo", { value: 300, currency: "MYR" });
+      pushDataLayer({ event: "add_payment_info", value: 300, currency: "MYR" });
 
       // Redirect to Billplz
       window.location.href = data.url;

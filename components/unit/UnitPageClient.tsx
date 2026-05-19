@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { fbq, pushDataLayer } from "@/lib/tracking";
 import GalleryCarousel from "./GalleryCarousel";
 import FacilitiesGrid from "./FacilitiesGrid";
 import PricingCards from "./PricingCards";
@@ -19,6 +20,11 @@ interface UnitPageClientProps {
 export default function UnitPageClient({ unitId, unitIndex }: UnitPageClientProps) {
   const unit = UNITS[unitId];
   const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    fbq("ViewContent", { content_name: unit.name, content_ids: [unitId], content_type: "product" });
+    pushDataLayer({ event: "view_item", item_name: unit.name, item_id: unitId });
+  }, [unitId, unit.name]);
 
   return (
     <>
